@@ -25,8 +25,7 @@ public class SignupController {
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
-    public String signup(@Valid @ModelAttribute SignupForm signupForm,
-            Errors errors) {
+    public String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors) {
         if (errors.hasErrors()) {
             return null;
         }
@@ -35,15 +34,13 @@ public class SignupController {
             userService.loadUserByUsername(signupForm.getEmail());
         } catch (UsernameNotFoundException e) {
             // OK
-            Account account = accountRepository
-                    .save(signupForm.createAccount());
+            Account account = accountRepository.save(signupForm.createAccount());
             userService.signin(account);
             return "redirect:/";
         }
 
         // ERROR
-        errors.rejectValue("email", "error.account.exists",
-                "Usuario ya registrado");
+        errors.rejectValue("email", "error.account.exists", "Usuario ya registrado");
         return null;
     }
 }
