@@ -32,7 +32,7 @@ public class SignupController {
         }
 
         try {
-            userService.loadUserByUsername(signupForm.getName());
+            userService.loadUserByUsername(signupForm.getEmail());
         } catch (UsernameNotFoundException e) {
             // OK
             Account account = accountRepository
@@ -42,8 +42,8 @@ public class SignupController {
         }
 
         // ERROR
-        errors.rejectValue("name", "error.account.exists",
-                "Nombre de usuario ya registrado");
+        errors.rejectValue("email", "error.account.exists",
+                "Usuario ya registrado");
         return null;
     }
 }

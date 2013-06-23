@@ -1,5 +1,7 @@
 package org.congreso.account;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.inject.Inject;
 
@@ -26,6 +28,7 @@ public class AccountRepository {
 	
 	public Account findByUsername(String username) {
 		try {
+		    List<Account> accounts = findAll();
 			return entityManager.createNamedQuery(Account.FIND_BY_USERNAME, Account.class)
 					.setParameter("username", username)
 					.getSingleResult();
@@ -33,6 +36,12 @@ public class AccountRepository {
 			return null;
 		}
 	}
+	
+    private List<Account> findAll() {
+        return entityManager
+                .createNamedQuery(Account.FIND_ALL, Account.class)
+                .getResultList();
+    }
 
 	
 }

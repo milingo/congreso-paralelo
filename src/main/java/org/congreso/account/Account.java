@@ -7,10 +7,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "account")
-@NamedQuery(name = Account.FIND_BY_USERNAME, query = "select a from Account a where a.username = :username")
+@NamedQueries({
+    @NamedQuery(name = Account.FIND_ALL, query = "SELECT a FROM Account a"),
+    @NamedQuery(name = Account.FIND_BY_USERNAME, query = "SELECT a FROM Account a WHERE a.username = :username")})
 public class Account implements java.io.Serializable {
 
 	public static final String FIND_BY_USERNAME = "Account.findByUsername";
+	public static final String FIND_ALL = "Account.findAll";
 
 	@Id
 	@GeneratedValue

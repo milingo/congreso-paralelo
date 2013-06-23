@@ -70,11 +70,11 @@ public class Votacion implements java.io.Serializable {
      * @return
      */
     public Option getOption() {
-        if (voto.equalsIgnoreCase("si") || voto.equalsIgnoreCase("sí")) {
+        if (voto.equalsIgnoreCase("si") || voto.equalsIgnoreCase("s√≠")) {
             return Option.YES;
         } else if (voto.equalsIgnoreCase("no")) {
            return Option.NO; 
-        } else if (voto.equalsIgnoreCase("abstencion") || voto.equalsIgnoreCase("abstención") ) {
+        } else if (voto.equalsIgnoreCase("abstencion") || voto.equalsIgnoreCase("abstenci√≥n") ) {
             return Option.ABS;
         } else {
             return Option.OUT;

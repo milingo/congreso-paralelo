@@ -63,7 +63,7 @@ public class VotacionCreationController {
                     votacionControllerHelper.getXmlVotacion(votacionForm));
         } catch (EntityDuplicatedException e1) {
             errors.rejectValue("xmlVotacion", "error.votacion.exists",
-                    "Esta votación ya se ha añadido al sistema");
+                    "Esta votaci√≥n ya se ha a√±adido al sistema");
             return returnValidationError(model);
         }
 
